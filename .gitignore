@@ -1,0 +1,7 @@
+# Ignore all files without extension (your compiled executables on Linux)
+*
+!*.*
+!*/
+
+# Object files if you happen to generate them
+*.o
