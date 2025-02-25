@@ -69,18 +69,64 @@ void insertAtPos(int item , int pos){
 }
 
 //deletion
-int deleteAtBeg(){
+void deleteAtBeg(){
     if(head==NULL){
         printf("Empty list \n");
-        return 0;
+      
     }else if(head->next==NULL){//single node
+        free(head);
         head=NULL;
-        return 0;
+      
+        
     }else{
-        int data=0;
-        data= head->data;
+       NodeType * temp=head;
         head= head->next;
-        return data;
+        free(temp);
+    }
+}
+
+void deleteAtEnd(){
+    if(head==NULL){
+        printf("Empty list \n");
+    }else if(head->next==NULL){
+        free(head);// free the memory
+        head=NULL;
+    }else{
+        NodeType *temp= head;
+        NodeType *prev= NULL;
+        while(temp->next!=NULL){
+            prev=temp;
+            temp=temp->next;
+        }
+        prev->next=NULL;
+        free(temp);
+    }
+}
+
+
+void deleteAtPos(int pos){
+    if(pos<1){
+        printf("Invalid postion\n");
+    }else if(pos==1){
+        if(head==NULL){
+            printf("Empty list \n");
+        }else if(head->next==NULL){
+            free(head);
+            head=NULL;
+        }else{
+            NodeType *temp=head;
+            head= head->next;
+            free(temp);
+        }
+    }else {
+        NodeType *temp=head;
+        NodeType *prev=NULL;
+        for(int i=1; i<pos && temp!=NULL; i++){
+            prev=temp;
+            temp= temp->next;
+        }
+        prev->next=temp->next;//point element after pos
+        free(temp);
     }
 }
 
@@ -107,6 +153,10 @@ int main(){
     insertAtPos(3,2);
     displayList();
     deleteAtBeg();
+    displayList();
+    deleteAtEnd();
+    displayList();
+    deleteAtPos(2);
     displayList();
     return 0;
 }
