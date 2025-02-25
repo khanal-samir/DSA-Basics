@@ -1,7 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
 //dynamic memory== heap memory persits unitl free is called
 // static memory == stack memory persits inside a function only
+#include <stdio.h>
+#include <stdlib.h>
 struct node {
     int data;
     struct node *next;
@@ -9,6 +9,7 @@ struct node {
 typedef struct node NodeType;// alternative name
 NodeType *head;
 
+//insertion
 void insertAtBeg(int item){
     NodeType *newNode;
     newNode= (NodeType*)malloc(sizeof(NodeType));
@@ -67,8 +68,23 @@ void insertAtPos(int item , int pos){
 
 }
 
+//deletion
+int deleteAtBeg(){
+    if(head==NULL){
+        printf("Empty list \n");
+        return 0;
+    }else if(head->next==NULL){//single node
+        head=NULL;
+        return 0;
+    }else{
+        int data=0;
+        data= head->data;
+        head= head->next;
+        return data;
+    }
+}
 
-
+//traverse
 void displayList (){
     struct node *temp;
     if(head==NULL){
@@ -80,17 +96,17 @@ void displayList (){
             printf("%d\t",temp->data);
             temp= temp->next;
         }
+        printf("\n");
     }
 }
 
-
 int main(){
     insertAtPos(1,1);
-    insertAtPos(2,1);
     insertAtBeg(5);
     insertAtEnd(100);
-    insertAtBeg(4);
     insertAtPos(3,2);
+    displayList();
+    deleteAtBeg();
     displayList();
     return 0;
 }
