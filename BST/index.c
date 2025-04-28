@@ -125,7 +125,7 @@ void postorderTraversal(struct Node* root) {
     }
 }
 
-// Main function for testing
+
 int main() {
     struct Node* root = NULL;
     

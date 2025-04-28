@@ -1,12 +1,11 @@
 #include <stdio.h>
-// Linear search function
 // Returns the index of the target in the array if found, otherwise returns -1
 int linearSearch(int arr[], int n, int target) {
     for (int i = 0; i < n; i++) {
         if (arr[i] == target)
             return i;
     }
-    // Element not found
+    
     return -1;
 }
 

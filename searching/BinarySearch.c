@@ -5,7 +5,7 @@ int binarySearchRecursive(int arr[], int left, int right, int target) {
     if (left > right)
         return -1;
     
-    // Calculate middle point with simple division
+    
     int mid = (left + right) / 2;
     
     // If the element is present at the middle
